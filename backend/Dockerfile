@@ -1,17 +1,14 @@
-FROM node:18-alpine
-
-# Creamos carpeta de la app
+FROM node:18-alpine AS builder
 WORKDIR /app
-
-# Instalamos dependencias
 COPY package*.json ./
 RUN npm install --production
-
-# Contruimos la aplicación
 COPY . .
 
+# --- Etapa final ---
+FROM node:18-alpine AS runner
+WORKDIR /app
 ENV NODE_ENV=production
+COPY --from=builder /app .
 EXPOSE 3000
-
 CMD ["node", "src/index.js"]
 
