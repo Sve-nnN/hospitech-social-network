@@ -13,7 +13,7 @@
 	import { authStore, logout } from '$lib/Contexts/IAM/Application/authStore';
 	import { goto } from '$app/navigation';
 	import { lang, availableLangs } from '$lib/i18n';
-	import Sidebar from '$lib/ui/Sidebar.svelte';
+	import TopNav from '$lib/ui/TopNav.svelte';
 	import RightSidebar from '$lib/ui/RightSidebar.svelte';
 	import { writable } from 'svelte/store';
 	
@@ -52,16 +52,15 @@
 	<meta name="description" content="Share and discover amazing hotel experiences" />
 </svelte:head>
 
-<div class="min-h-screen bg-gray-100">
-	<Sidebar />
+<div class="min-h-screen bg-gray-100 flex flex-col">
+	<TopNav />
 
-	<main class="min-h-screen transition-all duration-300 md:ml-64 lg:mr-80">
-		<div class="max-w-2xl mx-auto px-4 py-4">
+	<div class="flex flex-1 pt-16">
+		<main class="flex-1 max-w-2xl mx-auto px-4 py-4 w-full">
 			{@render children()}
-		</div>
-	</main>
-
-	<RightSidebar />
+		</main>
+		<RightSidebar />
+	</div>
 
 	{#if $loading}
 		<div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center">

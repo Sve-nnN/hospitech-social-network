@@ -12,7 +12,7 @@
   ];
 </script>
 
-<div class="fixed right-0 top-0 h-screen w-80 bg-white border-l border-gray-200 p-4 overflow-y-auto z-50">
+<div class="w-80 bg-white border-l border-gray-200 p-4 overflow-y-auto hidden lg:block">
   <div>
     <h3 class="font-semibold text-gray-600 text-sm mb-3">Suggested Hotels</h3>
     
