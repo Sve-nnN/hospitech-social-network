@@ -23,6 +23,17 @@ export const getHotel = async (req, res) => {
   }
 };
 
+export const getHotelBySlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const hotel = await Hotel.findOne({ slug });
+    if (!hotel) return res.status(404).json({ msg: 'Hotel no encontrado' });
+    res.json(hotel);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const getHotelPosts = async (req, res) => {
   try {
     const { id } = req.params;

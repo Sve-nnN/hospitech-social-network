@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { body } from 'express-validator';
-import { createHotel, getHotel, getHotelPosts, updateHotel, deleteHotel, getHotels } from '../controllers/hotel.controller.js';
+import { createHotel, getHotel, getHotelBySlug, getHotelPosts, updateHotel, deleteHotel, getHotels } from '../controllers/hotel.controller.js';
 import { validateRequest } from '../middleware/validateRequest.js';
 import validateObjectIdParam from '../middleware/validateObjectId.js';
 import requireAuth from '../middleware/auth.js';
@@ -19,6 +19,7 @@ router.post('/',
 	createHotel
 );
 
+router.get('/slug/:slug', getHotelBySlug);
 router.get('/:id', validateObjectIdParam('id'), getHotel);
 router.get('/:id/posts', validateObjectIdParam('id'), getHotelPosts);
 

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { body } from 'express-validator';
-import { createPost, getPost, updatePost, deletePost, getPosts } from '../controllers/post.controller.js';
+import { createPost, getPost, updatePost, deletePost, getPosts, toggleLike, addComment, sharePost, getUserPosts } from '../controllers/post.controller.js';
 import { validateRequest } from '../middleware/validateRequest.js';
 import requireAuth from '../middleware/auth.js';
 import validateObjectIdParam from '../middleware/validateObjectId.js';
@@ -25,6 +25,8 @@ router.post('/',
 	createPost
 );
 
+router.get('/user/:userId', validateObjectIdParam('userId'), getUserPosts);
+
 router.get('/:id', validateObjectIdParam('id'), getPost);
 
 router.put('/:id',
@@ -38,5 +40,18 @@ router.put('/:id',
 );
 
 router.delete('/:id', validateObjectIdParam('id'), requireAuth, deletePost);
+
+// Social Actions
+router.post('/:id/like', validateObjectIdParam('id'), requireAuth, toggleLike);
+router.post('/:id/comment', 
+    [
+        body('contenido').isString().notEmpty()
+    ],
+    validateObjectIdParam('id'), 
+    validateRequest,
+    requireAuth, 
+    addComment
+);
+router.post('/:id/share', validateObjectIdParam('id'), requireAuth, sharePost);
 
 export default router;

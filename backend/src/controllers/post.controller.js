@@ -1,42 +1,57 @@
+/**
+ * @fileoverview Post controller handling CRUD operations and social interactions
+ * @author Juan Carlos Angulo
+ * @module post.controller
+ */
+
 import mongoose from 'mongoose';
 import Post from '../models/Post.js';
 import Hotel from '../models/Hotel.js';
 import User from '../models/User.js';
 
-// Crear Post (Complejo: Denormalización + Actualización de Promedio)
+/**
+ * Creates a new post with denormalized user and hotel data
+ * @param {Object} req - Express request object
+ * @param {Object} req.body - Request body
+ * @param {string} req.body.contenido - Post content
+ * @param {number} req.body.rating - Hotel rating (1-5)
+ * @param {string} req.body.hotel_id - Hotel ID
+ * @param {string} [req.body.imagenes_url] - Optional image URLs
+ * @param {string} req.userId - Authenticated user ID
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
 export const createPost = async (req, res) => {
   try {
-    const { contenido, rating, hotel_id } = req.body;
+    const { contenido, rating, hotel_id, imagenes_url } = req.body;
     const user_id = req.userId || req.body.user_id;
 
-    // Validar IDs
     if (!mongoose.isValidObjectId(user_id) || !mongoose.isValidObjectId(hotel_id)) {
       return res.status(400).json({ msg: 'user_id o hotel_id inválido' });
     }
 
-    // 1. Buscar datos actuales del usuario y hotel para denormalizar (copiar)
     const user = await User.findById(user_id);
     const hotel = await Hotel.findById(hotel_id);
 
     if (!user || !hotel) return res.status(404).json({ msg: "User o Hotel no encontrado" });
 
-    // 2. Crear el Post con los datos copiados
     const newPost = await Post.create({
       contenido,
       rating,
       user_id,
       hotel_id,
+      imagenes_url: imagenes_url || [],
       user_info: {
         username: user.username,
         imagen_perfil_url: user.imagen_perfil_url
       },
       hotel_info: {
         nombre: hotel.nombre,
-        ciudad: hotel.direccion.ciudad
+        ciudad: hotel.direccion?.ciudad,
+        slug: hotel.slug
       }
     });
 
-    // 3. Recalcular el Rating del Hotel (Lógica clave)
     await actualizarRatingHotel(hotel_id);
 
     res.status(201).json(newPost);
@@ -45,34 +60,65 @@ export const createPost = async (req, res) => {
   }
 };
 
-// Función auxiliar para recalcular promedio
+/**
+ * Updates hotel average rating based on all posts
+ * @param {string} hotelId - Hotel ID
+ * @returns {Promise<void>}
+ * @private
+ */
 const actualizarRatingHotel = async (hotelId) => {
-  if (!mongoose.isValidObjectId(hotelId)) return;
-  // Usamos MongoDB Aggregation para calcular el promedio real
-  const stats = await Post.aggregate([
+  const result = await Post.aggregate([
     { $match: { hotel_id: new mongoose.Types.ObjectId(hotelId) } },
-    {
-      $group: {
-        _id: '$hotel_id',
-        nReviews: { $sum: 1 },
-        avgRating: { $avg: '$rating' }
-      }
-    }
+    { $group: { _id: null, avgRating: { $avg: '$rating' } } }
   ]);
+  const avgRating = result.length > 0 ? result[0].avgRating : 0;
+  await Hotel.findByIdAndUpdate(hotelId, { rating: avgRating });
+};
 
-  if (stats.length > 0) {
-    await Hotel.findByIdAndUpdate(hotelId, {
-      num_reviews: stats[0].nReviews,
-      avg_rating: stats[0].avgRating
+/**
+ * Retrieves all posts with pagination
+ * @param {Object} req - Express request object
+ * @param {Object} req.query - Query parameters
+ * @param {number} [req.query.page=1] - Page number
+ * @param {number} [req.query.limit=10] - Items per page
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
+export const getAllPosts = async (req, res) => {
+  try {
+    const { page = 1, limit = 10 } = req.query;
+    const skip = (page - 1) * limit;
+
+    const posts = await Post.find()
+      .sort({ fecha_creacion: -1 })
+      .skip(skip)
+      .limit(parseInt(limit));
+
+    const total = await Post.countDocuments();
+
+    res.json({
+      posts,
+      pagination: {
+        total,
+        page: parseInt(page),
+        pages: Math.ceil(total / limit)
+      }
     });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
 
-export const getPost = async (req, res) => {
+/**
+ * Retrieves a single post by ID
+ * @param {Object} req - Express request object
+ * @param {string} req.params.id - Post ID
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
+export const getPostById = async (req, res) => {
   try {
-    const { id } = req.params;
-    if (!mongoose.isValidObjectId(id)) return res.status(400).json({ msg: 'id inválido' });
-    const post = await Post.findById(id);
+    const post = await Post.findById(req.params.id);
     if (!post) return res.status(404).json({ msg: 'Post no encontrado' });
     res.json(post);
   } catch (error) {
@@ -80,88 +126,142 @@ export const getPost = async (req, res) => {
   }
 };
 
+/**
+ * Retrieves all posts by a specific user
+ * @param {Object} req - Express request object
+ * @param {string} req.params.userId - User ID
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
+export const getPostsByUser = async (req, res) => {
+  try {
+    const posts = await Post.find({ user_id: req.params.userId })
+      .sort({ fecha_creacion: -1 });
+    res.json({ posts });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+/**
+ * Retrieves all posts for a specific hotel
+ * @param {Object} req - Express request object
+ * @param {string} req.params.hotelId - Hotel ID
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
+export const getPostsByHotel = async (req, res) => {
+  try {
+    const posts = await Post.find({ hotel_id: req.params.hotelId })
+      .sort({ fecha_creacion: -1 });
+    res.json({ posts });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+/**
+ * Updates a post
+ * @param {Object} req - Express request object
+ * @param {string} req.params.id - Post ID
+ * @param {Object} req.body - Updated post data
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
 export const updatePost = async (req, res) => {
   try {
-    const { id } = req.params;
-    const { contenido, rating } = req.body;
-    if (!mongoose.isValidObjectId(id)) return res.status(400).json({ msg: 'id inválido' });
-    const post = await Post.findById(id);
+    const post = await Post.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
     if (!post) return res.status(404).json({ msg: 'Post no encontrado' });
-
-    const beforeRating = post.rating;
-    if (contenido !== undefined) post.contenido = contenido;
-    if (rating !== undefined) post.rating = rating;
-    await post.save();
-
-    // Si cambió el rating, recalculamos el promedio del hotel
-    if (rating !== undefined && rating !== beforeRating) {
-      await actualizarRatingHotel(post.hotel_id);
-    }
-
     res.json(post);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
+/**
+ * Deletes a post
+ * @param {Object} req - Express request object
+ * @param {string} req.params.id - Post ID
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
 export const deletePost = async (req, res) => {
   try {
-    const { id } = req.params;
-    if (!mongoose.isValidObjectId(id)) return res.status(400).json({ msg: 'id inválido' });
-    const post = await Post.findById(id);
+    const post = await Post.findByIdAndDelete(req.params.id);
     if (!post) return res.status(404).json({ msg: 'Post no encontrado' });
-    const hotelId = post.hotel_id;
-    await post.remove();
-    // Recalcular rating del hotel
-    await actualizarRatingHotel(hotelId);
-    res.status(204).send();
+    res.json({ msg: 'Post eliminado' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-export { actualizarRatingHotel };
-
-// List posts (global feed / discovery) with pagination and filters
-export const getPosts = async (req, res) => {
+/**
+ * Toggles like on a post
+ * @param {Object} req - Express request object
+ * @param {string} req.params.id - Post ID
+ * @param {string} req.userId - Authenticated user ID
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
+export const toggleLike = async (req, res) => {
   try {
-    const page = Math.max(parseInt(req.query.page || '1', 10), 1);
-    const limit = Math.min(Math.max(parseInt(req.query.limit || '20', 10), 1), 100);
-    const skip = (page - 1) * limit;
+    const postId = req.params.id;
+    const userId = req.userId;
 
-    const filter = {};
-    if (req.query.user_id && mongoose.isValidObjectId(req.query.user_id)) filter.user_id = req.query.user_id;
-    if (req.query.hotel_id && mongoose.isValidObjectId(req.query.hotel_id)) filter.hotel_id = req.query.hotel_id;
-    if (req.query.min_rating) filter.rating = { ...(filter.rating || {}), $gte: parseInt(req.query.min_rating, 10) };
-    if (req.query.max_rating) filter.rating = { ...(filter.rating || {}), $lte: parseInt(req.query.max_rating, 10) };
+    const post = await Post.findById(postId);
+    if (!post) return res.status(404).json({ msg: 'Post no encontrado' });
 
-    let sort = { fecha_creacion: -1 };
-    if (req.query.sort) {
-      // simple sort: '-fecha_creacion' or 'rating'
-      const s = req.query.sort;
-      if (s.startsWith('-')) sort = { [s.slice(1)]: -1 };
-      else sort = { [s]: 1 };
+    const likeIndex = post.likes.indexOf(userId);
+    if (likeIndex > -1) {
+      post.likes.splice(likeIndex, 1);
+    } else {
+      post.likes.push(userId);
     }
 
-    const [total, posts] = await Promise.all([
-      Post.countDocuments(filter),
-      Post.find(filter).sort(sort).skip(skip).limit(limit)
-    ]);
-
-    res.json({ page, limit, total, posts });
+    await post.save();
+    res.json(post);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-// List posts for a specific user
-export const getUserPosts = async (req, res) => {
+/**
+ * Adds a comment to a post
+ * @param {Object} req - Express request object
+ * @param {string} req.params.id - Post ID
+ * @param {Object} req.body - Comment data
+ * @param {string} req.body.contenido - Comment content
+ * @param {string} req.userId - Authenticated user ID
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
+export const addComment = async (req, res) => {
   try {
-    const { userId } = req.params;
-    if (!mongoose.isValidObjectId(userId)) return res.status(400).json({ msg: 'userId inválido' });
-    // forward to getPosts logic with user_id filter
-    req.query.user_id = userId;
-    return getPosts(req, res);
+    const postId = req.params.id;
+    const userId = req.userId;
+    const { contenido } = req.body;
+
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ msg: 'Usuario no encontrado' });
+
+    const post = await Post.findById(postId);
+    if (!post) return res.status(404).json({ msg: 'Post no encontrado' });
+
+    post.comments.push({
+      user_id: userId,
+      contenido,
+      user_info: {
+        username: user.username,
+        imagen_perfil_url: user.imagen_perfil_url
+      }
+    });
+
+    await post.save();
+    res.json(post);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

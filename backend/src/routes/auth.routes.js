@@ -1,41 +1,45 @@
-import { Router } from "express";
-import { body, check } from "express-validator";
-import { register, login, refresh } from "../controllers/auth.controller.js";
-import { validateRequest } from "../middleware/validateRequest.js";
+/**
+ * @fileoverview Authentication routes
+ * @author Juan Carlos Angulo
+ * @module auth.routes
+ */
 
-const router = Router();
+import express from "express";
+import {
+  register,
+  login,
+  refresh,
+  logout,
+} from "../controllers/auth.controller.js";
 
-router.post(
-  "/register",
-  [
-    body("username").isString().isLength({ min: 3 }),
-    body("email").isEmail(),
-    body("nombre").optional().isString(),
-    body("apellido").optional().isString(),
-    body("password").isString().isLength({ min: 6 }),
-  ],
-  validateRequest,
-  register
-);
+const router = express.Router();
 
-router.post(
-  "/login",
-  [
-    body("email").optional().isEmail(),
-    body("username").optional().isString().isLength({ min: 1 }),
-    body("password").isString().notEmpty(),
-    // ensure at least email or username is provided
-    check().custom((_, { req }) => {
-      if (!req.body.email && !req.body.username)
-        throw new Error("email or username required");
-      return true;
-    }),
-  ],
-  validateRequest,
-  login
-);
+/**
+ * @route POST /api/auth/register
+ * @desc Register a new user
+ * @access Public
+ */
+router.post("/register", register);
+
+/**
+ * @route POST /api/auth/login
+ * @desc Login user
+ * @access Public
+ */
+router.post("/login", login);
+
+/**
+ * @route POST /api/auth/refresh
+ * @desc Refresh access token
+ * @access Public
+ */
+router.post("/refresh", refresh);
+
+/**
+ * @route POST /api/auth/logout
+ * @desc Logout user
+ * @access Public
+ */
+router.post("/logout", logout);
 
 export default router;
-
-// Endpoint para refresh token
-router.post("/refresh", refresh);

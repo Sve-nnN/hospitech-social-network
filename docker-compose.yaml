@@ -25,6 +25,7 @@ services:
       - mongo
     volumes:
       - ./backend:/app
+    command: ["npm", "run", "dev"]
 
   frontend:
     build:
@@ -42,7 +43,6 @@ services:
       - ./frontend-hospitech/src:/app/src
       - ./frontend-hospitech/public:/app/public
       - ./frontend-hospitech/.env:/app/.env
-      - /app/node_modules
     command: ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 
 volumes:

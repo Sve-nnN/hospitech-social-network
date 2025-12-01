@@ -67,12 +67,12 @@ export const followUser = async (req, res) => {
     if (!user || !target) return res.status(404).json({ msg: 'Usuario origen o destino no encontrado' });
 
     // Si ya lo sigue, no hacemos nada
-    if (user.following_users && user.following_users.some(id => id.toString() === targetId)) {
+    if (user.following_users && user.following_users.some(id => id.toString() === target._id.toString())) {
       return res.status(200).json({ msg: 'Ya sigues a este usuario' });
     }
 
     // Añadir y actualizar contadores
-    user.following_users.push(targetId);
+    user.following_users.push(target._id);
     user.following_users_count = (user.following_users_count || 0) + 1;
     await user.save();
 
@@ -84,7 +84,7 @@ export const followUser = async (req, res) => {
     }
     await target.save();
 
-    res.json({ msg: "Usuario seguido con éxito" });
+    res.json({ msg: "Usuario seguido con éxito", user: target });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -125,6 +125,18 @@ export const getUserProfile = async (req, res) => {
   }
 };
 
+// Get user by username (for friendly URLs)
+export const getUserByUsername = async (req, res) => {
+  try {
+    const { username } = req.params;
+    const user = await User.findOne({ username });
+    if (!user) return res.status(404).json({ msg: 'Usuario no encontrado' });
+    res.json(user.toObject({ transform: (doc, ret) => { delete ret.password; return ret; } }));
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const getMyProfile = async (req, res) => {
   try {
     const userId = req.userId;
@@ -136,51 +148,51 @@ export const getMyProfile = async (req, res) => {
   }
 };
 
-  export const updateMyProfile = async (req, res) => {
-    try {
-      const userId = req.userId;
-      const updates = { ...req.body };
-      if (updates.password) {
-        updates.password = await new Promise((res, rej) => bcrypt.hash(updates.password, 10, (err, h) => err ? rej(err) : res(h)));
-      }
-
-      // resolve actual user document first to obtain _id if token used a username/email
-      const resolved = await findUserFlexible(userId);
-      if (!resolved) return res.status(404).json({ msg: 'Usuario no encontrado' });
-
-      const user = await User.findByIdAndUpdate(resolved._id, updates, { new: true, runValidators: true }).select('-password');
-      if (!user) return res.status(404).json({ msg: 'Usuario no encontrado' });
-      res.json(user);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
+export const updateMyProfile = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const updates = { ...req.body };
+    if (updates.password) {
+      updates.password = await new Promise((res, rej) => bcrypt.hash(updates.password, 10, (err, h) => err ? rej(err) : res(h)));
     }
-  };
 
-  export const deleteMyAccount = async (req, res) => {
-    try {
-      const userId = req.userId;
+    // resolve actual user document first to obtain _id if token used a username/email
+    const resolved = await findUserFlexible(userId);
+    if (!resolved) return res.status(404).json({ msg: 'Usuario no encontrado' });
 
-      // resolve user (allow token to carry username/email)
-      const resolved = await findUserFlexible(userId);
-      if (!resolved) return res.status(404).json({ msg: 'Usuario no encontrado' });
+    const user = await User.findByIdAndUpdate(resolved._id, updates, { new: true, runValidators: true }).select('-password');
+    if (!user) return res.status(404).json({ msg: 'Usuario no encontrado' });
+    res.json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-      // Find posts by user to recalculate hotel ratings after deletion
-      const posts = await Post.find({ user_id: resolved._id });
-      const hotelIds = [...new Set(posts.map(p => p.hotel_id.toString()))];
-      // Delete posts
-      await Post.deleteMany({ user_id: resolved._id });
+export const deleteMyAccount = async (req, res) => {
+  try {
+    const userId = req.userId;
 
-      // Delete user
-      await User.findByIdAndDelete(resolved._id);
+    // resolve user (allow token to carry username/email)
+    const resolved = await findUserFlexible(userId);
+    if (!resolved) return res.status(404).json({ msg: 'Usuario no encontrado' });
 
-      // Recalculate ratings for affected hotels
-      const { actualizarRatingHotel } = await import('./post.controller.js');
-      for (const hid of hotelIds) {
-        await actualizarRatingHotel(hid);
-      }
+    // Find posts by user to recalculate hotel ratings after deletion
+    const posts = await Post.find({ user_id: resolved._id });
+    const hotelIds = [...new Set(posts.map(p => p.hotel_id.toString()))];
+    // Delete posts
+    await Post.deleteMany({ user_id: resolved._id });
 
-      res.status(204).send();
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+    // Delete user
+    await User.findByIdAndDelete(resolved._id);
+
+    // Recalculate ratings for affected hotels
+    const { actualizarRatingHotel } = await import('./post.controller.js');
+    for (const hid of hotelIds) {
+      await actualizarRatingHotel(hid);
     }
-  };
+
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

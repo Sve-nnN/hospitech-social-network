@@ -7,6 +7,7 @@ const geoPoint = {
 
 const hotelSchema = new mongoose.Schema({
   nombre: { type: String, required: true, trim: true },
+  slug: { type: String, unique: true, trim: true },
   direccion: {
     calle: { type: String, default: '' },
     ciudad: { type: String, required: true, trim: true },
@@ -20,7 +21,19 @@ const hotelSchema = new mongoose.Schema({
   num_reviews: { type: Number, default: 0 }
 }, { timestamps: true });
 
+// Auto-generate slug from nombre before saving
+hotelSchema.pre('save', function(next) {
+  if (this.isModified('nombre') && !this.slug) {
+    this.slug = this.nombre
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
+  next();
+});
+
 hotelSchema.index({ 'direccion.coordenadas': '2dsphere' });
 hotelSchema.index({ nombre: 1 });
+hotelSchema.index({ slug: 1 });
 
 export default mongoose.model('Hotel', hotelSchema);

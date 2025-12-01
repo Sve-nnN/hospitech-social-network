@@ -1,18 +1,34 @@
-import jwt from 'jsonwebtoken';
+/**
+ * @fileoverview Authentication middleware for protecting routes
+ * @author Juan Carlos Angulo
+ * @module auth.middleware
+ */
 
-const JWT_SECRET = process.env.JWT_SECRET || 'change_me';
+import { verifyAccessToken } from "../utils/jwt.js";
 
-export const requireAuth = (req, res, next) => {
-  const auth = req.headers.authorization;
-  if (!auth || !auth.startsWith('Bearer ')) return res.status(401).json({ msg: 'No autorizado' });
-  const token = auth.slice(7);
+/**
+ * Middleware to verify JWT access token
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function
+ * @returns {void}
+ */
+export const authMiddleware = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  console.log("[Backend Auth] Header:", authHeader);
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    console.log("[Backend Auth] Missing or invalid format");
+    return res.status(401).json({ msg: "Unauthorized" });
+  }
+
+  const token = authHeader.split(" ")[1];
   try {
-    const payload = jwt.verify(token, JWT_SECRET);
-    req.userId = payload.sub;
+    const decoded = verifyAccessToken(token);
+    req.user = decoded;
     next();
-  } catch (e) {
-    return res.status(401).json({ msg: 'Token inválido' });
+  } catch (error) {
+    console.log("[Backend Auth] Token verification failed:", error.message);
+    return res.status(401).json({ msg: "Invalid token" });
   }
 };
-
-export default requireAuth;

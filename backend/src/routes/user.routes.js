@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { body } from 'express-validator';
-import { createUser, getFeed, followUser, followHotel, getUserProfile, getMyProfile, updateMyProfile, deleteMyAccount } from '../controllers/user.controller.js';
+import { createUser, getFeed, followUser, followHotel, getUserProfile, getUserByUsername, getMyProfile, updateMyProfile, deleteMyAccount } from '../controllers/user.controller.js';
 import { getUserPosts } from '../controllers/post.controller.js';
 import { validateRequest } from '../middleware/validateRequest.js';
 import validateObjectIdParam from '../middleware/validateObjectId.js';
@@ -25,6 +25,7 @@ router.get('/me', requireAuth, getMyProfile);
 router.get('/me/feed', requireAuth, getFeed);
 
 // Public profile (/:userId must come after static routes like /me)
+router.get('/username/:username', getUserByUsername);
 router.get('/:userId', validateObjectIdParam('userId'), getUserProfile);
 router.get('/:userId/posts', validateObjectIdParam('userId'), getUserPosts);
 

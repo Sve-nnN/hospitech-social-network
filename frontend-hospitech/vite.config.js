@@ -13,6 +13,14 @@ export default defineConfig({
 			outdir: './src/lib/paraglide'
 		})
 	],
+	server: {
+		proxy: {
+			'/api': {
+				target: 'http://backend:3000',
+				changeOrigin: true
+			}
+		}
+	},
 	test: {
 		expect: { requireAssertions: true },
 		projects: [
