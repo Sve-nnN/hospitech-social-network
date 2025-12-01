@@ -1,0 +1,15 @@
+/*
+  layout.css
+  Placeholder file for route-level layout styles.
+  Created to satisfy import in `+layout.svelte` when the file is missing.
+
+  Add route-specific CSS here if needed. Avoid duplicating Tailwind
+  utility generation; prefer using `app.css` for global Tailwind styles.
+*/
+
+/* Example: small helper that can be overridden by Tailwind classes */
+.layout-custom-container {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}

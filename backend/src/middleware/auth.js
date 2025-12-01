@@ -26,9 +26,13 @@ export const authMiddleware = (req, res, next) => {
   try {
     const decoded = verifyAccessToken(token);
     req.user = decoded;
+    req.userId = decoded.sub;
     next();
   } catch (error) {
     console.log("[Backend Auth] Token verification failed:", error.message);
     return res.status(401).json({ msg: "Invalid token" });
   }
 };
+
+// Export por defecto para compatibilidad con imports que usan `import requireAuth from '../middleware/auth.js'`
+export default authMiddleware;

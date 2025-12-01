@@ -1,9 +1,3 @@
-/**
- * @fileoverview Main application layout with sidebars and global feedback
- * @author Juan Carlos Angulo
- * @layout RootLayout
- */
-
 <script>
 	import '../app.css';
 	import './layout.css';
@@ -16,6 +10,8 @@
 	import TopNav from '$lib/ui/TopNav.svelte';
 	import RightSidebar from '$lib/ui/RightSidebar.svelte';
 	import { writable } from 'svelte/store';
+    import { Toaster } from "$lib/components/ui/sonner";
+    import { ModeWatcher } from "mode-watcher";
 	
 	let { data, children } = $props();
 	let unsubLoading, unsubError, unsubAuth;
@@ -28,8 +24,19 @@
 	unsubError = globalError.subscribe(v => error.set(v));
 	unsubAuth = authStore.subscribe(v => user.set(v.user));
     
+    import { get } from 'svelte/store';
+
     if (data?.user) {
-        authStore.set({ user: data.user, token: null, loading: false, error: null });
+        const current = get(authStore);
+        // If server provides token (from cookie), use it. Otherwise try to keep current one.
+        const token = data.token || current.token;
+        
+        authStore.set({ 
+            user: data.user, 
+            token: token, 
+            loading: false, 
+            error: null 
+        });
     }
 
 	onDestroy(() => { unsubLoading(); unsubError(); unsubAuth(); });
@@ -52,7 +59,7 @@
 	<meta name="description" content="Share and discover amazing hotel experiences" />
 </svelte:head>
 
-<div class="min-h-screen bg-gray-100 flex flex-col">
+<div class="min-h-screen bg-background flex flex-col">
 	<TopNav />
 
 	<div class="flex flex-1 pt-16">
@@ -76,30 +83,8 @@
 		</div>
 	{/if}
 
-	{#if $error}
-		<div class="fixed top-4 right-4 z-50">
-			<div class="bg-white border border-red-200 rounded-lg shadow-lg p-4 max-w-md">
-				<div class="flex items-start gap-3">
-					<svg class="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
-					</svg>
-					<div class="flex-1">
-						<h3 class="font-semibold text-gray-900 text-sm">Error</h3>
-						<p class="text-sm text-gray-600 mt-1">{$error}</p>
-					</div>
-					<button 
-						onclick={() => error.set('')}
-						class="text-gray-400 hover:text-gray-600 transition-colors"
-						aria-label="Close error message"
-					>
-						<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-						</svg>
-					</button>
-				</div>
-			</div>
-		</div>
-	{/if}
+    <ModeWatcher />
+    <Toaster />
 </div>
 
 <style>

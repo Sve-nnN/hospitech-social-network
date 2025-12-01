@@ -12,6 +12,7 @@
  */
 export function load({ locals }) {
     return {
-        user: locals.user || null
+        user: locals.user || null,
+        token: locals.token || null
     };
 }

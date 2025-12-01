@@ -5,6 +5,7 @@
  */
 
 import { writable } from 'svelte/store';
+import { toast } from "svelte-sonner";
 
 /**
  * Store for global loading state
@@ -13,7 +14,7 @@ import { writable } from 'svelte/store';
 export const globalLoading = writable(false);
 
 /**
- * Store for global error messages
+ * Store for global error messages (deprecated in favor of Sonner)
  * @type {import('svelte/store').Writable<string>}
  */
 export const globalError = writable('');
@@ -35,11 +36,20 @@ export function hideLoading() {
 }
 
 /**
- * Displays a global error message
+ * Displays a global error message using Sonner
  * @param {string} message - The error message to display
  * @returns {void}
  */
-export function showError(message) {
-    globalError.set(message);
-    setTimeout(() => globalError.set(''), 5000);
+export function showError(message: string) {
+    // globalError.set(message);
+    toast.error(message);
+}
+
+/**
+ * Displays a global success message using Sonner
+ * @param {string} message - The success message to display
+ * @returns {void}
+ */
+export function showSuccess(message: string) {
+    toast.success(message);
 }

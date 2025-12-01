@@ -4,9 +4,9 @@
     import Badge from '$lib/ui/Badge.svelte';
     import Button from '$lib/ui/Button.svelte';
 
-    let { data } = $props();
-    let hotel = $derived(data.hotel);
-    let posts = $derived(data.posts);
+    let { data: pageData } = $props();
+    let hotel = pageData.hotel || null;
+    let posts = pageData.posts || [];
 </script>
 
 <div class="max-w-2xl mx-auto py-8 px-4 animate-fade-in">

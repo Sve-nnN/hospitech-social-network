@@ -31,6 +31,7 @@ export class AuthService {
 			return { success: false, message };
 		}
 		cookies.set('jwt', apiResult.data.accessToken, { path: '/', httpOnly: true, secure: false }); // secure: false for localhost
+		console.log('AuthApi.login data:', JSON.stringify(apiResult.data, null, 2));
 		return { success: true, token: apiResult.data.accessToken, user: apiResult.data.user };
 	}
 

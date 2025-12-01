@@ -1,4 +1,4 @@
-version: "3.8"
+
 services:
   mongo:
     image: mongo:6.0
@@ -21,10 +21,13 @@ services:
     environment:
       - PORT=3000
       - MONGO_URI=mongodb://mongo:27017/red_social_hoteles
+      - JWT_SECRET=change_me
+      - JWT_REFRESH_SECRET=refresh_secret
     depends_on:
       - mongo
     volumes:
       - ./backend:/app
+      - /app/node_modules
     command: ["npm", "run", "dev"]
 
   frontend:
@@ -37,6 +40,8 @@ services:
       - "5173:5173"
     environment:
       - NODE_ENV=development
+      - JWT_SECRET=change_me
+      - JWT_REFRESH_SECRET=refresh_secret
     depends_on:
       - backend
     volumes:

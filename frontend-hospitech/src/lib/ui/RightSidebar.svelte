@@ -1,9 +1,3 @@
-/**
- * @fileoverview Right sidebar with suggested hotels
- * @author Juan Carlos Angulo
- * @component RightSidebar
- */
-
 <script>
   const suggestedHotels = [
     { name: 'The Coastal Lodge', location: 'Bali, Indonesia' },

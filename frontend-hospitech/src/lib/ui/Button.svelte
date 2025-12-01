@@ -1,55 +1,42 @@
-/**
- * @fileoverview Reusable Button component with multiple variants and states
- * @author Juan Carlos Angulo
- * @component Button
- */
-
 <script>
-  /**
-   * @typedef {'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'} ButtonVariant
-   * @typedef {'sm' | 'md' | 'lg'} ButtonSize
-   */
+/**
+ * Reusable Button component with variants and loading state.
+ */
+export let variant = 'primary';
+export let size = 'md';
+export let loading = false;
+export let disabled = false;
+export let onclick = () => {};
 
-  /**
-   * @type {ButtonVariant}
-   */
-  let { 
-    variant = 'primary',
-    size = 'md',
-    loading = false,
-    disabled = false,
-    onclick = () => {},
-    class: className = '',
-    children
-  } = $props();
+const variantClasses = {
+  primary: 'bg-primary-600 hover:bg-primary-700 text-white shadow-sm',
+  secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white shadow-sm',
+  outline: 'border-2 border-gray-300 hover:border-gray-400 text-gray-700 bg-white',
+  ghost: 'hover:bg-gray-100 text-gray-700',
+  danger: 'bg-red-600 hover:bg-red-700 text-white shadow-sm'
+};
 
-  const variantClasses = {
-    primary: 'bg-primary-600 hover:bg-primary-700 text-white shadow-sm',
-    secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white shadow-sm',
-    outline: 'border-2 border-gray-300 hover:border-gray-400 text-gray-700 bg-white',
-    ghost: 'hover:bg-gray-100 text-gray-700',
-    danger: 'bg-red-600 hover:bg-red-700 text-white shadow-sm'
-  };
+const sizeClasses = {
+  sm: 'px-3 py-1.5 text-sm',
+  md: 'px-4 py-2 text-base',
+  lg: 'px-6 py-3 text-lg'
+};
 
-  const sizeClasses = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg'
-  };
-
-  const classes = $derived(
-    `inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 
-    ${variantClasses[variant]} 
-    ${sizeClasses[size]} 
-    ${disabled || loading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'} 
-    ${className}`
-  );
+function getClasses() {
+  const base = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200';
+  const v = variantClasses[variant] ?? variantClasses.primary;
+  const s = sizeClasses[size] ?? sizeClasses.md;
+  const state = (disabled || loading) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
+  // $$restProps.class may contain classes passed via the component's `class` attribute
+  const extra = ($$restProps && $$restProps.class) ? $$restProps.class : '';
+  return [base, v, s, state, extra].filter(Boolean).join(' ');
+}
 </script>
 
-<button 
-  {onclick}
+<button
+  on:click={onclick}
   disabled={disabled || loading}
-  class={classes}
+  class={getClasses()}
   type="button"
 >
   {#if loading}
@@ -58,5 +45,6 @@
       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
     </svg>
   {/if}
-  {@render children()}
+
+  <slot />
 </button>

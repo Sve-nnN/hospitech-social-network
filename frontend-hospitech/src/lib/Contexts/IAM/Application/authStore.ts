@@ -9,10 +9,13 @@ function getInitialAuth() {
 		const raw = localStorage.getItem(STORAGE_KEY);
 		if (raw) {
 			try {
-				return JSON.parse(raw);
+                const parsed = JSON.parse(raw);
+                console.log('[AuthStore] Initializing from localStorage:', parsed);
+				return parsed;
 			} catch {}
 		}
 	}
+    console.log('[AuthStore] Initializing empty');
 	return { user: null, token: null };
 }
 

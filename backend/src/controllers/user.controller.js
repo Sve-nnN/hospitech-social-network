@@ -61,6 +61,8 @@ export const followUser = async (req, res) => {
   try {
     const followerId = req.userId; // authenticated user
     const { targetId } = req.body; // target user to follow
+    
+    console.log('[UserController] followUser:', { followerId, targetId });
 
     const user = await findUserFlexible(followerId);
     const target = await findUserFlexible(targetId);

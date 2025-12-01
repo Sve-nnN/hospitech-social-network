@@ -1,18 +1,7 @@
-/**
- * @fileoverview Loading skeleton component with multiple variants
- * @author Juan Carlos Angulo
- * @component Skeleton
- */
-
 <script>
-  /**
-   * @typedef {'card' | 'list' | 'text'} SkeletonVariant
-   */
-
-  let { 
-    variant = 'card',
-    count = 1
-  } = $props();
+  // Loading skeleton component with variants
+  export let variant = 'card';
+  export let count = 1;
 </script>
 
 {#each Array(count) as _, i}

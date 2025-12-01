@@ -6,11 +6,17 @@
   import { showLoading, hideLoading, showError } from '$lib/ui/globalFeedback';
   import { t } from '$lib/i18n';
   import { PostService } from '$lib/Contexts/Content/Application/postService';
-  // import type { IPost } from '$lib/Contexts/Content/Domain/Post';
+  import { Button } from "$lib/components/ui/button";
+  import { Input } from "$lib/components/ui/input";
+  import { Label } from "$lib/components/ui/label";
+  import { Textarea } from "$lib/components/ui/textarea";
+  import * as Card from "$lib/components/ui/card";
 
   export let postId = null;
   let isNew = !postId;
+  /** @type {any} */
   let post = { title: '', content: '' };
+  /** @type {any} */
   let user = null;
   let loading = false;
 
@@ -43,18 +49,26 @@
   }
 </script>
 
-<section class="max-w-xl mx-auto mt-8 p-6 bg-white rounded shadow">
-  <h1 class="text-2xl font-bold mb-4">{isNew ? $t('post.create') : $t('post.detail')}</h1>
-  <form on:submit|preventDefault={savePost} class="space-y-4">
-    <div>
-      <label class="block text-sm font-medium" for="title">{$t('post.title')}</label>
-      <input id="title" class="w-full border rounded-md px-3 py-2 mt-1" bind:value={post.title} required />
-    </div>
-    <div>
-      <label class="block text-sm font-medium" for="content">{$t('post.content')}</label>
-      <textarea id="content" class="w-full border rounded-md px-3 py-2 mt-1" rows="5" bind:value={post.content} required></textarea>
-    </div>
-  <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition" type="submit" disabled={loading}>{loading ? 'Guardando...' : isNew ? 'Crear' : $t('post.save')}</button>
-    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition ml-2" type="button" on:click={() => goto('/feed')}>{$t('post.cancel')}</button>
-  </form>
-</section>
+<div class="container max-w-xl mx-auto mt-8 p-4">
+  <Card.Root>
+    <Card.Header>
+      <Card.Title>{isNew ? $t('post.create') : $t('post.detail')}</Card.Title>
+    </Card.Header>
+    <Card.Content>
+      <form on:submit|preventDefault={savePost} class="space-y-4">
+        <div class="grid w-full items-center gap-1.5">
+          <Label for="title">{$t('post.title')}</Label>
+          <Input id="title" bind:value={post.title} required />
+        </div>
+        <div class="grid w-full items-center gap-1.5">
+          <Label for="content">{$t('post.content')}</Label>
+          <Textarea id="content" rows={5} bind:value={post.content} required />
+        </div>
+        <div class="flex gap-2">
+          <Button type="submit" disabled={loading}>{loading ? 'Guardando...' : isNew ? 'Crear' : $t('post.save')}</Button>
+          <Button variant="outline" type="button" on:click={() => goto('/feed')}>{$t('post.cancel')}</Button>
+        </div>
+      </form>
+    </Card.Content>
+  </Card.Root>
+</div>

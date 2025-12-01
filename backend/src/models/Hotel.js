@@ -15,6 +15,8 @@ const hotelSchema = new mongoose.Schema({
     coordenadas: { ...geoPoint }
   },
   imagenes_url: { type: [String], default: [] },
+  descripcion: { type: String, default: '' },
+  estrellas: { type: Number, default: 0 },
   
   // Datos calculados
   avg_rating: { type: Number, default: 0 },
@@ -24,10 +26,11 @@ const hotelSchema = new mongoose.Schema({
 // Auto-generate slug from nombre before saving
 hotelSchema.pre('save', function(next) {
   if (this.isModified('nombre') && !this.slug) {
-    this.slug = this.nombre
+    const baseSlug = this.nombre
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
+    this.slug = `${baseSlug}-${Date.now()}`;
   }
   next();
 });

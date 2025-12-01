@@ -245,6 +245,10 @@ export const addComment = async (req, res) => {
     const userId = req.userId;
     const { contenido } = req.body;
 
+    console.log('[PostController] addComment:', { postId, userId, contenido });
+
+    if (!contenido) return res.status(400).json({ msg: 'Contenido requerido' });
+
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ msg: 'Usuario no encontrado' });
 
@@ -266,3 +270,35 @@ export const addComment = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+/**
+ * Toggles share (repost) for a post by the authenticated user
+ * @param {Object} req - Express request object
+ * @param {string} req.params.id - Post ID
+ * @param {string} req.userId - Authenticated user ID
+ * @param {Object} res - Express response object
+ */
+export const sharePost = async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const userId = req.userId;
+
+    const post = await Post.findById(postId);
+    if (!post) return res.status(404).json({ msg: 'Post no encontrado' });
+
+    const shareIndex = post.shares.indexOf(userId);
+    if (shareIndex > -1) {
+      post.shares.splice(shareIndex, 1);
+    } else {
+      post.shares.push(userId);
+    }
+
+    await post.save();
+    res.json(post);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Export aliases para mantener compatibilidad con las rutas existentes
+export { getPostById as getPost, getAllPosts as getPosts, getPostsByUser as getUserPosts };

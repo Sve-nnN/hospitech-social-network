@@ -1,0 +1,2534 @@
+
+> frontend-hospitech@0.0.1 test:unit
+> vitest --run --reporter=verbose src/__tests__/post/PostCard.svelte.spec.ts
+
+The following Vite config options will be overridden by SvelteKit:
+  - base
+The following Vite config options will be overridden by SvelteKit:
+  - root
+The following Vite config options will be overridden by SvelteKit:
+  - root
+
+[1m[46m RUN [49m[22m [36mv4.0.14 [39m[90mX:/Web/hospitech-social-network/frontend-hospitech[39m
+
+The following Vite config options will be overridden by SvelteKit:
+  - root
+The following Vite config options will be overridden by SvelteKit:
+  - base
+[90mstdout[2m | unknown test
+[22m[39m[AuthStore] Initializing empty
+ [32m✓[39m [30m[43m client (chromium) [49m[39m src/__tests__/post/PostCard.svelte.spec.ts[2m:44:5[22m[2m > [22mPostCard Component[2m > [22mrenders post content correctly[32m 82[2mms[22m[39m
+ [31m×[39m [30m[43m client (chromium) [49m[39m src/__tests__/post/PostCard.svelte.spec.ts[2m:50:5[22m[2m > [22mPostCard Component[2m > [22mhandles like button click[32m 20[2mms[22m[39m
+[31m   → Found multiple elements with the text: Like
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-heart mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+    >
+      
+    </path>
+    
+    
+  </svg>
+   Like
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-heart mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+    >
+      
+    </path>
+    
+    
+  </svg>
+   Like
+  
+  
+</button>
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+<body>
+  
+  
+
+
+  <div>
+    <div
+      class="bg-card text-card-foreground rounded-lg border shadow-sm mb-4"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-4 pb-0"
+      >
+        <div
+          class="flex items-center gap-3"
+        >
+          <a
+            href="/profile/testuser"
+          >
+            <div
+              class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+              data-avatar-root=""
+              data-status="loading"
+              id="bits-c1"
+            >
+              <img
+                alt="testuser"
+                class="aspect-square h-full w-full"
+                data-avatar-image=""
+                data-status="loading"
+                id="bits-c2"
+                src="http://example.com/avatar.jpg"
+                style="display: none;"
+              />
+              
+               
+              <span
+                class="flex h-full w-full items-center justify-center rounded-full bg-muted"
+                data-avatar-fallback=""
+                data-status="loading"
+              >
+                T
+                
+              </span>
+              
+              
+            </div>
+            
+          </a>
+           
+          <div
+            class="flex-1"
+          >
+            <a
+              class="font-semibold text-foreground hover:underline"
+              href="/profile/testuser"
+            >
+              testuser
+            </a>
+             
+            <div
+              class="flex items-center gap-2 text-xs text-muted-foreground"
+            >
+              <span>
+                1/12/2025
+              </span>
+               
+               
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="p-4"
+      >
+        <p
+          class="text-foreground mb-3"
+        >
+          Test content
+        </p>
+         
+      </div>
+       
+      <div
+        class="items-center flex flex-col p-0"
+      >
+        <div
+          class="px-4 py-2 flex items-center justify-between text-sm text-muted-foreground border-t w-full"
+        >
+          <span>
+            0 likes
+          </span>
+           
+          <span>
+            0 comments
+          </span>
+        </div>
+         
+        <div
+          class="flex items-center border-t w-full"
+        >
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-heart mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Like
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Comment
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="18"
+                cy="5"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="6"
+                cy="12"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="18"
+                cy="19"
+                r="3"
+              >
+                
+              </circle>
+              
+              <line
+                x1="8.59"
+                x2="15.42"
+                y1="13.51"
+                y2="17.49"
+              >
+                
+              </line>
+              
+              <line
+                x1="15.41"
+                x2="8.59"
+                y1="6.51"
+                y2="10.49"
+              >
+                
+              </line>
+              
+              
+            </svg>
+             Share
+            
+            
+          </button>
+          
+          
+        </div>
+         
+      </div>
+    </div>
+    
+    
+    
+  </div>
+  <div>
+    <div
+      class="bg-card text-card-f...[39m
+ [31m×[39m [30m[43m client (chromium) [49m[39m src/__tests__/post/PostCard.svelte.spec.ts[2m:60:5[22m[2m > [22mPostCard Component[2m > [22mtoggles comment section[32m 16[2mms[22m[39m
+[31m   → Found multiple elements with the text: Comment
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+    >
+      
+    </path>
+    
+    
+  </svg>
+   Comment
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+    >
+      
+    </path>
+    
+    
+  </svg>
+   Comment
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+    >
+      
+    </path>
+    
+    
+  </svg>
+   Comment
+  
+  
+</button>
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+<body>
+  
+  
+
+
+  <div>
+    <div
+      class="bg-card text-card-foreground rounded-lg border shadow-sm mb-4"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-4 pb-0"
+      >
+        <div
+          class="flex items-center gap-3"
+        >
+          <a
+            href="/profile/testuser"
+          >
+            <div
+              class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+              data-avatar-root=""
+              data-status="loading"
+              id="bits-c1"
+            >
+              <img
+                alt="testuser"
+                class="aspect-square h-full w-full"
+                data-avatar-image=""
+                data-status="loading"
+                id="bits-c2"
+                src="http://example.com/avatar.jpg"
+                style="display: none;"
+              />
+              
+               
+              <span
+                class="flex h-full w-full items-center justify-center rounded-full bg-muted"
+                data-avatar-fallback=""
+                data-status="loading"
+              >
+                T
+                
+              </span>
+              
+              
+            </div>
+            
+          </a>
+           
+          <div
+            class="flex-1"
+          >
+            <a
+              class="font-semibold text-foreground hover:underline"
+              href="/profile/testuser"
+            >
+              testuser
+            </a>
+             
+            <div
+              class="flex items-center gap-2 text-xs text-muted-foreground"
+            >
+              <span>
+                1/12/2025
+              </span>
+               
+               
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="p-4"
+      >
+        <p
+          class="text-foreground mb-3"
+        >
+          Test content
+        </p>
+         
+      </div>
+       
+      <div
+        class="items-center flex flex-col p-0"
+      >
+        <div
+          class="px-4 py-2 flex items-center justify-between text-sm text-muted-foreground border-t w-full"
+        >
+          <span>
+            0 likes
+          </span>
+           
+          <span>
+            0 comments
+          </span>
+        </div>
+         
+        <div
+          class="flex items-center border-t w-full"
+        >
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-heart mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Like
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Comment
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="18"
+                cy="5"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="6"
+                cy="12"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="18"
+                cy="19"
+                r="3"
+              >
+                
+              </circle>
+              
+              <line
+                x1="8.59"
+                x2="15.42"
+                y1="13.51"
+                y2="17.49"
+              >
+                
+              </line>
+              
+              <line
+                x1="15.41"
+                x2="8.59"
+                y1="6.51"
+                y2="10.49"
+              >
+                
+              </line>
+              
+              
+            </svg>
+             Share
+            
+            
+          </button>
+          
+          
+        </div>
+         
+      </div>
+    </div>
+    
+    
+    
+  </div>
+  <div>
+    <div
+      class="bg-card text-card-f...[39m
+ [31m×[39m [30m[43m client (chromium) [49m[39m src/__tests__/post/PostCard.svelte.spec.ts[2m:74:5[22m[2m > [22mPostCard Component[2m > [22mhandles share button click[32m 22[2mms[22m[39m
+[31m   → Found multiple elements with the text: Share
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="18"
+      cy="5"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="6"
+      cy="12"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="18"
+      cy="19"
+      r="3"
+    >
+      
+    </circle>
+    
+    <line
+      x1="8.59"
+      x2="15.42"
+      y1="13.51"
+      y2="17.49"
+    >
+      
+    </line>
+    
+    <line
+      x1="15.41"
+      x2="8.59"
+      y1="6.51"
+      y2="10.49"
+    >
+      
+    </line>
+    
+    
+  </svg>
+   Share
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="18"
+      cy="5"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="6"
+      cy="12"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="18"
+      cy="19"
+      r="3"
+    >
+      
+    </circle>
+    
+    <line
+      x1="8.59"
+      x2="15.42"
+      y1="13.51"
+      y2="17.49"
+    >
+      
+    </line>
+    
+    <line
+      x1="15.41"
+      x2="8.59"
+      y1="6.51"
+      y2="10.49"
+    >
+      
+    </line>
+    
+    
+  </svg>
+   Share
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="18"
+      cy="5"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="6"
+      cy="12"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="18"
+      cy="19"
+      r="3"
+    >
+      
+    </circle>
+    
+    <line
+      x1="8.59"
+      x2="15.42"
+      y1="13.51"
+      y2="17.49"
+    >
+      
+    </line>
+    
+    <line
+      x1="15.41"
+      x2="8.59"
+      y1="6.51"
+      y2="10.49"
+    >
+      
+    </line>
+    
+    
+  </svg>
+   Share
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="18"
+      cy="5"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="6"
+      cy="12"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="18"
+      cy="19"
+      r="3"
+    >
+      
+    </circle>
+    
+    <line
+      x1="8.59"
+      x2="15.42"
+      y1="13.51"
+      y2="17.49"
+    >
+      
+    </line>
+    
+    <line
+      x1="15.41"
+      x2="8.59"
+      y1="6.51"
+      y2="10.49"
+    >
+      
+    </line>
+    
+    
+  </svg>
+   Share
+  
+  
+</button>
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+<body>
+  
+  
+
+
+  <div>
+    <div
+      class="bg-card text-card-foreground rounded-lg border shadow-sm mb-4"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-4 pb-0"
+      >
+        <div
+          class="flex items-center gap-3"
+        >
+          <a
+            href="/profile/testuser"
+          >
+            <div
+              class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+              data-avatar-root=""
+              data-status="loading"
+              id="bits-c1"
+            >
+              <img
+                alt="testuser"
+                class="aspect-square h-full w-full"
+                data-avatar-image=""
+                data-status="loading"
+                id="bits-c2"
+                src="http://example.com/avatar.jpg"
+                style="display: none;"
+              />
+              
+               
+              <span
+                class="flex h-full w-full items-center justify-center rounded-full bg-muted"
+                data-avatar-fallback=""
+                data-status="loading"
+              >
+                T
+                
+              </span>
+              
+              
+            </div>
+            
+          </a>
+           
+          <div
+            class="flex-1"
+          >
+            <a
+              class="font-semibold text-foreground hover:underline"
+              href="/profile/testuser"
+            >
+              testuser
+            </a>
+             
+            <div
+              class="flex items-center gap-2 text-xs text-muted-foreground"
+            >
+              <span>
+                1/12/2025
+              </span>
+               
+               
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="p-4"
+      >
+        <p
+          class="text-foreground mb-3"
+        >
+          Test content
+        </p>
+         
+      </div>
+       
+      <div
+        class="items-center flex flex-col p-0"
+      >
+        <div
+          class="px-4 py-2 flex items-center justify-between text-sm text-muted-foreground border-t w-full"
+        >
+          <span>
+            0 likes
+          </span>
+           
+          <span>
+            0 comments
+          </span>
+        </div>
+         
+        <div
+          class="flex items-center border-t w-full"
+        >
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-heart mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Like
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Comment
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="18"
+                cy="5"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="6"
+                cy="12"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="18"
+                cy="19"
+                r="3"
+              >
+                
+              </circle>
+              
+              <line
+                x1="8.59"
+                x2="15.42"
+                y1="13.51"
+                y2="17.49"
+              >
+                
+              </line>
+              
+              <line
+                x1="15.41"
+                x2="8.59"
+                y1="6.51"
+                y2="10.49"
+              >
+                
+              </line>
+              
+              
+            </svg>
+             Share
+            
+            
+          </button>
+          
+          
+        </div>
+         
+      </div>
+    </div>
+    
+    
+    
+  </div>
+  <div>
+    <div
+      class="bg-card text-card-f...[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m [30m[43m client (chromium) [49m[39m src/__tests__/post/PostCard.svelte.spec.ts[2m:50:5[22m[2m > [22mPostCard Component[2m > [22mhandles like button click
+[31m[1mTestingLibraryElementError[22m[39m: Found multiple elements with the text: Like
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-heart mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+    >
+      
+    </path>
+    
+    
+  </svg>
+   Like
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-heart mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+    >
+      
+    </path>
+    
+    
+  </svg>
+   Like
+  
+  
+</button>
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+<body>
+  
+  
+
+
+  <div>
+    <div
+      class="bg-card text-card-foreground rounded-lg border shadow-sm mb-4"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-4 pb-0"
+      >
+        <div
+          class="flex items-center gap-3"
+        >
+          <a
+            href="/profile/testuser"
+          >
+            <div
+              class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+              data-avatar-root=""
+              data-status="loading"
+              id="bits-c1"
+            >
+              <img
+                alt="testuser"
+                class="aspect-square h-full w-full"
+                data-avatar-image=""
+                data-status="loading"
+                id="bits-c2"
+                src="http://example.com/avatar.jpg"
+                style="display: none;"
+              />
+              
+               
+              <span
+                class="flex h-full w-full items-center justify-center rounded-full bg-muted"
+                data-avatar-fallback=""
+                data-status="loading"
+              >
+                T
+                
+              </span>
+              
+              
+            </div>
+            
+          </a>
+           
+          <div
+            class="flex-1"
+          >
+            <a
+              class="font-semibold text-foreground hover:underline"
+              href="/profile/testuser"
+            >
+              testuser
+            </a>
+             
+            <div
+              class="flex items-center gap-2 text-xs text-muted-foreground"
+            >
+              <span>
+                1/12/2025
+              </span>
+               
+               
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="p-4"
+      >
+        <p
+          class="text-foreground mb-3"
+        >
+          Test content
+        </p>
+         
+      </div>
+       
+      <div
+        class="items-center flex flex-col p-0"
+      >
+        <div
+          class="px-4 py-2 flex items-center justify-between text-sm text-muted-foreground border-t w-full"
+        >
+          <span>
+            0 likes
+          </span>
+           
+          <span>
+            0 comments
+          </span>
+        </div>
+         
+        <div
+          class="flex items-center border-t w-full"
+        >
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-heart mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Like
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Comment
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="18"
+                cy="5"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="6"
+                cy="12"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="18"
+                cy="19"
+                r="3"
+              >
+                
+              </circle>
+              
+              <line
+                x1="8.59"
+                x2="15.42"
+                y1="13.51"
+                y2="17.49"
+              >
+                
+              </line>
+              
+              <line
+                x1="15.41"
+                x2="8.59"
+                y1="6.51"
+                y2="10.49"
+              >
+                
+              </line>
+              
+              
+            </svg>
+             Share
+            
+            
+          </button>
+          
+          
+        </div>
+         
+      </div>
+    </div>
+    
+    
+    
+  </div>
+  <div>
+    <div
+      class="bg-card text-card-f...
+[90m [2m❯[22m Object.getElementError node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m339:18[22m[39m
+[90m [2m❯[22m getElementError node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1149:21[22m[39m
+[90m [2m❯[22m getMultipleElementsFoundError node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1152:9[22m[39m
+[90m [2m❯[22m node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1188:12[22m[39m
+[90m [2m❯[22m node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1228:18[22m[39m
+[36m [2m❯[22m src/__tests__/post/PostCard.svelte.spec.ts:[2m54:27[22m[39m
+    [90m 52| [39m        [35mconst[39m { getByText } [33m=[39m [34mrender[39m([33mPostCard[39m[33m,[39m { post[33m:[39m mockPost })[33m;[39m
+    [90m 53| [39m        
+    [90m 54| [39m        [35mconst[39m likeButton [33m=[39m [34mgetByText[39m([32m'Like'[39m)[33m;[39m
+    [90m   | [39m                          [31m^[39m
+    [90m 55| [39m        [35mawait[39m fireEvent[33m.[39m[34mclick[39m(likeButton)[33m;[39m
+    [90m 56| [39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m [30m[43m client (chromium) [49m[39m src/__tests__/post/PostCard.svelte.spec.ts[2m:60:5[22m[2m > [22mPostCard Component[2m > [22mtoggles comment section
+[31m[1mTestingLibraryElementError[22m[39m: Found multiple elements with the text: Comment
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+    >
+      
+    </path>
+    
+    
+  </svg>
+   Comment
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+    >
+      
+    </path>
+    
+    
+  </svg>
+   Comment
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+    >
+      
+    </path>
+    
+    
+  </svg>
+   Comment
+  
+  
+</button>
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+<body>
+  
+  
+
+
+  <div>
+    <div
+      class="bg-card text-card-foreground rounded-lg border shadow-sm mb-4"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-4 pb-0"
+      >
+        <div
+          class="flex items-center gap-3"
+        >
+          <a
+            href="/profile/testuser"
+          >
+            <div
+              class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+              data-avatar-root=""
+              data-status="loading"
+              id="bits-c1"
+            >
+              <img
+                alt="testuser"
+                class="aspect-square h-full w-full"
+                data-avatar-image=""
+                data-status="loading"
+                id="bits-c2"
+                src="http://example.com/avatar.jpg"
+                style="display: none;"
+              />
+              
+               
+              <span
+                class="flex h-full w-full items-center justify-center rounded-full bg-muted"
+                data-avatar-fallback=""
+                data-status="loading"
+              >
+                T
+                
+              </span>
+              
+              
+            </div>
+            
+          </a>
+           
+          <div
+            class="flex-1"
+          >
+            <a
+              class="font-semibold text-foreground hover:underline"
+              href="/profile/testuser"
+            >
+              testuser
+            </a>
+             
+            <div
+              class="flex items-center gap-2 text-xs text-muted-foreground"
+            >
+              <span>
+                1/12/2025
+              </span>
+               
+               
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="p-4"
+      >
+        <p
+          class="text-foreground mb-3"
+        >
+          Test content
+        </p>
+         
+      </div>
+       
+      <div
+        class="items-center flex flex-col p-0"
+      >
+        <div
+          class="px-4 py-2 flex items-center justify-between text-sm text-muted-foreground border-t w-full"
+        >
+          <span>
+            0 likes
+          </span>
+           
+          <span>
+            0 comments
+          </span>
+        </div>
+         
+        <div
+          class="flex items-center border-t w-full"
+        >
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-heart mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Like
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Comment
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="18"
+                cy="5"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="6"
+                cy="12"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="18"
+                cy="19"
+                r="3"
+              >
+                
+              </circle>
+              
+              <line
+                x1="8.59"
+                x2="15.42"
+                y1="13.51"
+                y2="17.49"
+              >
+                
+              </line>
+              
+              <line
+                x1="15.41"
+                x2="8.59"
+                y1="6.51"
+                y2="10.49"
+              >
+                
+              </line>
+              
+              
+            </svg>
+             Share
+            
+            
+          </button>
+          
+          
+        </div>
+         
+      </div>
+    </div>
+    
+    
+    
+  </div>
+  <div>
+    <div
+      class="bg-card text-card-f...
+[90m [2m❯[22m Object.getElementError node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m339:18[22m[39m
+[90m [2m❯[22m getElementError node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1149:21[22m[39m
+[90m [2m❯[22m getMultipleElementsFoundError node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1152:9[22m[39m
+[90m [2m❯[22m node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1188:12[22m[39m
+[90m [2m❯[22m node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1228:18[22m[39m
+[36m [2m❯[22m src/__tests__/post/PostCard.svelte.spec.ts:[2m63:30[22m[39m
+    [90m 61| [39m        const { getByText, queryByPlaceholderText } = render(PostCard,…
+    [90m 62| [39m        
+    [90m 63| [39m        [35mconst[39m commentButton [33m=[39m [34mgetByText[39m([32m'Comment'[39m)[33m;[39m
+    [90m   | [39m                             [31m^[39m
+    [90m 64| [39m        
+    [90m 65| [39m        [90m// Initially comment input should not be visible[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m [30m[43m client (chromium) [49m[39m src/__tests__/post/PostCard.svelte.spec.ts[2m:74:5[22m[2m > [22mPostCard Component[2m > [22mhandles share button click
+[31m[1mTestingLibraryElementError[22m[39m: Found multiple elements with the text: Share
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="18"
+      cy="5"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="6"
+      cy="12"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="18"
+      cy="19"
+      r="3"
+    >
+      
+    </circle>
+    
+    <line
+      x1="8.59"
+      x2="15.42"
+      y1="13.51"
+      y2="17.49"
+    >
+      
+    </line>
+    
+    <line
+      x1="15.41"
+      x2="8.59"
+      y1="6.51"
+      y2="10.49"
+    >
+      
+    </line>
+    
+    
+  </svg>
+   Share
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="18"
+      cy="5"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="6"
+      cy="12"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="18"
+      cy="19"
+      r="3"
+    >
+      
+    </circle>
+    
+    <line
+      x1="8.59"
+      x2="15.42"
+      y1="13.51"
+      y2="17.49"
+    >
+      
+    </line>
+    
+    <line
+      x1="15.41"
+      x2="8.59"
+      y1="6.51"
+      y2="10.49"
+    >
+      
+    </line>
+    
+    
+  </svg>
+   Share
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="18"
+      cy="5"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="6"
+      cy="12"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="18"
+      cy="19"
+      r="3"
+    >
+      
+    </circle>
+    
+    <line
+      x1="8.59"
+      x2="15.42"
+      y1="13.51"
+      y2="17.49"
+    >
+      
+    </line>
+    
+    <line
+      x1="15.41"
+      x2="8.59"
+      y1="6.51"
+      y2="10.49"
+    >
+      
+    </line>
+    
+    
+  </svg>
+   Share
+  
+  
+</button>
+
+Ignored nodes: comments, script, style
+<button
+  builders=""
+  class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+  data-button-root="true"
+  tabindex="0"
+  type="button"
+>
+   
+  <svg
+    class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="18"
+      cy="5"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="6"
+      cy="12"
+      r="3"
+    >
+      
+    </circle>
+    
+    <circle
+      cx="18"
+      cy="19"
+      r="3"
+    >
+      
+    </circle>
+    
+    <line
+      x1="8.59"
+      x2="15.42"
+      y1="13.51"
+      y2="17.49"
+    >
+      
+    </line>
+    
+    <line
+      x1="15.41"
+      x2="8.59"
+      y1="6.51"
+      y2="10.49"
+    >
+      
+    </line>
+    
+    
+  </svg>
+   Share
+  
+  
+</button>
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+<body>
+  
+  
+
+
+  <div>
+    <div
+      class="bg-card text-card-foreground rounded-lg border shadow-sm mb-4"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-4 pb-0"
+      >
+        <div
+          class="flex items-center gap-3"
+        >
+          <a
+            href="/profile/testuser"
+          >
+            <div
+              class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+              data-avatar-root=""
+              data-status="loading"
+              id="bits-c1"
+            >
+              <img
+                alt="testuser"
+                class="aspect-square h-full w-full"
+                data-avatar-image=""
+                data-status="loading"
+                id="bits-c2"
+                src="http://example.com/avatar.jpg"
+                style="display: none;"
+              />
+              
+               
+              <span
+                class="flex h-full w-full items-center justify-center rounded-full bg-muted"
+                data-avatar-fallback=""
+                data-status="loading"
+              >
+                T
+                
+              </span>
+              
+              
+            </div>
+            
+          </a>
+           
+          <div
+            class="flex-1"
+          >
+            <a
+              class="font-semibold text-foreground hover:underline"
+              href="/profile/testuser"
+            >
+              testuser
+            </a>
+             
+            <div
+              class="flex items-center gap-2 text-xs text-muted-foreground"
+            >
+              <span>
+                1/12/2025
+              </span>
+               
+               
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="p-4"
+      >
+        <p
+          class="text-foreground mb-3"
+        >
+          Test content
+        </p>
+         
+      </div>
+       
+      <div
+        class="items-center flex flex-col p-0"
+      >
+        <div
+          class="px-4 py-2 flex items-center justify-between text-sm text-muted-foreground border-t w-full"
+        >
+          <span>
+            0 likes
+          </span>
+           
+          <span>
+            0 comments
+          </span>
+        </div>
+         
+        <div
+          class="flex items-center border-t w-full"
+        >
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-heart mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Like
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-message-circle mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+              >
+                
+              </path>
+              
+              
+            </svg>
+             Comment
+            
+            
+          </button>
+          
+          
+           
+          <button
+            builders=""
+            class="inline-flex items-center justify-center text-sm font-medium whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex-1 rounded-none"
+            data-button-root="true"
+            tabindex="0"
+            type="button"
+          >
+             
+            <svg
+              class="lucide-icon lucide lucide-share-2 mr-2 h-4 w-4"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="18"
+                cy="5"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="6"
+                cy="12"
+                r="3"
+              >
+                
+              </circle>
+              
+              <circle
+                cx="18"
+                cy="19"
+                r="3"
+              >
+                
+              </circle>
+              
+              <line
+                x1="8.59"
+                x2="15.42"
+                y1="13.51"
+                y2="17.49"
+              >
+                
+              </line>
+              
+              <line
+                x1="15.41"
+                x2="8.59"
+                y1="6.51"
+                y2="10.49"
+              >
+                
+              </line>
+              
+              
+            </svg>
+             Share
+            
+            
+          </button>
+          
+          
+        </div>
+         
+      </div>
+    </div>
+    
+    
+    
+  </div>
+  <div>
+    <div
+      class="bg-card text-card-f...
+[90m [2m❯[22m Object.getElementError node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m339:18[22m[39m
+[90m [2m❯[22m getElementError node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1149:21[22m[39m
+[90m [2m❯[22m getMultipleElementsFoundError node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1152:9[22m[39m
+[90m [2m❯[22m node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1188:12[22m[39m
+[90m [2m❯[22m node_modules/.vite/vitest/d2a04d71301a8915217dd5faf81d12cffd6cd958/deps/@testing-library_svelte.js?v=9bc7722c:[2m1228:18[22m[39m
+[36m [2m❯[22m src/__tests__/post/PostCard.svelte.spec.ts:[2m77:28[22m[39m
+    [90m 75| [39m        // Currently share button does nothing, but we want to verify …
+    [90m 76| [39m        [35mconst[39m { getByText } [33m=[39m [34mrender[39m([33mPostCard[39m[33m,[39m { post[33m:[39m mockPost })[33m;[39m
+    [90m 77| [39m        [35mconst[39m shareButton [33m=[39m [34mgetByText[39m([32m'Share'[39m)[33m;[39m
+    [90m   | [39m                           [31m^[39m
+    [90m 78| [39m        [35mawait[39m fireEvent[33m.[39m[34mclick[39m(shareButton)[33m;[39m
+    [90m 79| [39m        [90m// Expect no error[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 11:06:41
+[2m   Duration [22m 5.15s[2m (transform 0ms, setup 0ms, import 966ms, tests 143ms, environment 0ms)[22m
+

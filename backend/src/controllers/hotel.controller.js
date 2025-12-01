@@ -4,9 +4,11 @@ import Post from '../models/Post.js';
 
 export const createHotel = async (req, res) => {
   try {
+    console.log('[HotelController] createHotel body:', JSON.stringify(req.body));
     const hotel = await Hotel.create(req.body);
     res.status(201).json(hotel);
   } catch (error) {
+    console.error('[HotelController] createHotel error:', error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -15,8 +17,12 @@ export const getHotel = async (req, res) => {
   try {
     const { id } = req.params;
     if (!mongoose.isValidObjectId(id)) return res.status(400).json({ msg: 'id inválido' });
+    console.log('[HotelController] getHotel searching for ID:', id);
     const hotel = await Hotel.findById(id);
-    if (!hotel) return res.status(404).json({ msg: 'Hotel no encontrado' });
+    if (!hotel) {
+        console.log('[HotelController] Hotel not found for ID:', id);
+        return res.status(404).json({ msg: 'Hotel no encontrado' });
+    }
     res.json(hotel);
   } catch (error) {
     res.status(500).json({ error: error.message });

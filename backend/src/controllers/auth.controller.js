@@ -107,9 +107,10 @@ export const login = async (req, res, next) => {
     console.log("BODY /login:", req.body);
     const { username, password } = req.body;
 
+    // Include password explicitly because the schema marks it with `select: false`
     const user = await User.findOne({
       $or: [{ username }, { email: username }],
-    });
+    }).select('+password');
 
     if (!user) {
       return res.status(401).json({ msg: "Invalid credentials" });

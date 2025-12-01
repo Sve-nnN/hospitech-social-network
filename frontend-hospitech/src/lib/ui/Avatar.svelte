@@ -1,20 +1,11 @@
-/**
- * @fileoverview Reusable Avatar component with size variants
- * @author Juan Carlos Angulo
- * @component Avatar
- */
-
 <script>
   /**
-   * @typedef {'sm' | 'md' | 'lg' | 'xl'} AvatarSize
+   * Reusable Avatar component with size variants
    */
-
-  let { 
-    src = '',
-    alt = 'User avatar',
-    size = 'md',
-    class: className = ''
-  } = $props();
+  export let src = '';
+  export let alt = 'User avatar';
+  export let size = 'md';
+  export let className = '';
 
   const sizeClasses = {
     sm: 'w-8 h-8 text-xs',
@@ -23,17 +14,19 @@
     xl: 'w-16 h-16 text-lg'
   };
 
-  const fallbackLetter = $derived(alt[0]?.toUpperCase() || 'U');
+  function getFallbackLetter() {
+    return (alt && alt[0]) ? alt[0].toUpperCase() : 'U';
+  }
 </script>
 
 {#if src}
-  <img 
-    {src} 
-    {alt} 
-    class="rounded-full object-cover {sizeClasses[size]} {className}"
+  <img
+    src={src}
+    alt={alt}
+    class={`rounded-full object-cover ${sizeClasses[size]} ${className}`}
   />
 {:else}
-  <div class="rounded-full bg-gradient-to-br from-primary-400 to-secondary-400 flex items-center justify-center text-white font-semibold {sizeClasses[size]} {className}">
-    {fallbackLetter}
+  <div class={`rounded-full bg-gradient-to-br from-primary-400 to-secondary-400 flex items-center justify-center text-white font-semibold ${sizeClasses[size]} ${className}`}>
+    {getFallbackLetter()}
   </div>
 {/if}

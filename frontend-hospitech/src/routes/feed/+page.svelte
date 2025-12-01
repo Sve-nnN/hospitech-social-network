@@ -1,18 +1,12 @@
-/**
- * @fileoverview Feed page displaying user posts
- * @author Juan Carlos Angulo
- * @page Feed
- */
-
 <script>
   import { onMount } from 'svelte';
-  import { showError } from '$lib/ui/globalFeedback';
   import CreatePost from '$lib/ui/CreatePost.svelte';
   import PostCard from '$lib/ui/PostCard.svelte';
   import Skeleton from '$lib/ui/Skeleton.svelte';
+  import { showError } from '$lib/ui/globalFeedback';
 
-  let posts = $state([]);
-  let loading = $state(true);
+  let posts = [];
+  let loading = true;
 
   onMount(async () => {
     try {
