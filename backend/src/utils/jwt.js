@@ -7,9 +7,9 @@
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
-const JWT_SECRET = process.env.JWT_SECRET || "change_me";
+const JWT_SECRET = process.env.JWT_SECRET || "hospitech_secret_key_2024";
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || "refresh_secret";
-const ACCESS_TOKEN_EXPIRES = "15m";
+const ACCESS_TOKEN_EXPIRES = "24h";
 const REFRESH_TOKEN_EXPIRES = "7d";
 
 /**

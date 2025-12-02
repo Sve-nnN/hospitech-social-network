@@ -11,6 +11,7 @@
  * @returns {Object} User data object
  */
 export function load({ locals }) {
+    console.log('[Layout Server] Load running');
     return {
         user: locals.user || null,
         token: locals.token || null

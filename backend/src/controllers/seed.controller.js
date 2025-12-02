@@ -142,6 +142,16 @@ export const seedDatabase = async (req, res) => {
                 biografia: 'Padre de tres. Experto en hoteles family-friendly.',
                 direccion: { ciudad: 'Miami', pais: 'Estados Unidos' },
                 imagen_perfil_url: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80'
+            },
+            {
+                username: 'juancarlosanguloabud@gmail.com',
+                email: 'juancarlosanguloabud@gmail.com',
+                password: await bcrypt.hash('juanjuan', 10),
+                nombre: 'Juan',
+                apellido: 'Angulo',
+                biografia: 'Usuario Administrador',
+                direccion: { ciudad: 'Bogota', pais: 'Colombia' },
+                imagen_perfil_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80'
             }
         ];
 

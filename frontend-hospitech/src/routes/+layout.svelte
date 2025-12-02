@@ -9,9 +9,10 @@
 	import { lang, availableLangs } from '$lib/i18n';
 	import TopNav from '$lib/ui/TopNav.svelte';
 	import RightSidebar from '$lib/ui/RightSidebar.svelte';
-	import { writable } from 'svelte/store';
+	import { writable, get } from 'svelte/store';
     import { Toaster } from "$lib/components/ui/sonner";
     import { ModeWatcher } from "mode-watcher";
+    import { page } from '$app/stores';
 	
 	let { data, children } = $props();
 	let unsubLoading, unsubError, unsubAuth;
@@ -24,20 +25,30 @@
 	unsubError = globalError.subscribe(v => error.set(v));
 	unsubAuth = authStore.subscribe(v => user.set(v.user));
     
-    import { get } from 'svelte/store';
-
-    if (data?.user) {
-        const current = get(authStore);
-        // If server provides token (from cookie), use it. Otherwise try to keep current one.
-        const token = data.token || current.token;
-        
-        authStore.set({ 
-            user: data.user, 
-            token: token, 
-            loading: false, 
-            error: null 
-        });
-    }
+    // Sync server user state with client store
+    $effect(() => {
+        if (data?.user) {
+            const current = get(authStore);
+            const token = data.token || current.token;
+            
+            // Only update if different to avoid loops
+            if (JSON.stringify(current.user) !== JSON.stringify(data.user)) {
+                authStore.set({ 
+                    user: data.user, 
+                    token: token, 
+                    loading: false, 
+                    error: null 
+                });
+            }
+        } else {
+            // If server says logged out but client has user, clear it (fix ghost session)
+            const current = get(authStore);
+            if (current.user) {
+                console.log('[Layout] Server session missing, clearing client store');
+                logout();
+            }
+        }
+    });
 
 	onDestroy(() => { unsubLoading(); unsubError(); unsubAuth(); });
 
@@ -51,6 +62,8 @@
 		lang.set(newLang);
 		selectedLang = newLang;
 	}
+
+    let isAuthPage = $derived($page.url.pathname.startsWith('/auth'));
 </script>
 
 <svelte:head>
@@ -60,16 +73,21 @@
 </svelte:head>
 
 <div class="min-h-screen bg-background flex flex-col">
-	<TopNav />
+    {#if !isAuthPage}
+	    <TopNav />
+    {/if}
 
 	<div class="flex flex-1 pt-16">
 		<main class="flex-1 max-w-2xl mx-auto px-4 py-4 w-full">
 			{@render children()}
 		</main>
-		<RightSidebar />
+        {#if !isAuthPage}
+		    <RightSidebar />
+        {/if}
 	</div>
 
-	{#if $loading}
+	<!-- Global Loading Overlay (Commented out to prevent blocking) -->
+	<!-- {#if $loading}
 		<div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center">
 			<div class="bg-white rounded-lg p-6 shadow-lg">
 				<div class="flex items-center gap-3">
@@ -81,7 +99,7 @@
 				</div>
 			</div>
 		</div>
-	{/if}
+	{/if} -->
 
     <ModeWatcher />
     <Toaster />

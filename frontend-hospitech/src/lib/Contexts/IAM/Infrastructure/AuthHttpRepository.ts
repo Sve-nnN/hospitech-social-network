@@ -1,9 +1,17 @@
-// Repositorio HTTP de autenticación
+import { AuthApi } from './authApi';
+
 export class AuthHttpRepository {
 	async login(email: string, password: string): Promise<any> {
-		// Llamada HTTP a /api/v1/auth/login
+		return await AuthApi.login({
+			email: email.includes('@') ? email : undefined,
+			username: email.includes('@') ? undefined : email,
+			password,
+			fetch: window.fetch.bind(window)
+		});
 	}
+
 	async refresh(): Promise<any> {
-		// Llamada HTTP a /api/v1/auth/refresh
+		// Implement refresh logic if needed, or leave as placeholder
+		return { ok: false, message: 'Not implemented' };
 	}
 }

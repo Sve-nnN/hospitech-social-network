@@ -32,11 +32,11 @@ export const register = async (req, res, next) => {
     console.log("HEADERS /register:", req.headers);
     console.log("BODY /register:", req.body);
     let { username, email, nombre, apellido, password } = req.body;
-    
+
     if (!nombre) nombre = "Nombre";
     if (!apellido) apellido = "Apellido";
     const hashed = password ? await bcrypt.hash(password, 10) : undefined;
-    
+
     try {
       const user = await User.create({
         username,
@@ -81,6 +81,7 @@ export const register = async (req, res, next) => {
     } catch (err) {
       if (err.code === 11000) {
         const field = Object.keys(err.keyPattern)[0];
+        console.error(`Register duplicate error: ${field} already exists`);
         return res.status(400).json({ msg: `${field} already exists` });
       }
       throw err;
@@ -105,7 +106,12 @@ export const login = async (req, res, next) => {
   try {
     console.log("HEADERS /login:", req.headers);
     console.log("BODY /login:", req.body);
-    const { username, password } = req.body;
+    let { username, password, email } = req.body;
+
+    // If username is not provided but email is, use email as username for lookup
+    if (!username && email) {
+      username = email;
+    }
 
     // Include password explicitly because the schema marks it with `select: false`
     const user = await User.findOne({
