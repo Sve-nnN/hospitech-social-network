@@ -245,14 +245,22 @@
       <p class="text-sm text-muted-foreground flex items-center gap-1">
         {#if mode === 'login'}
           {$t('auth.noAccount')}
-          <Button variant="link" on:click={toggleMode} class="p-0 h-auto font-normal">
+          <button 
+            type="button"
+            on:click={toggleMode} 
+            class="text-primary underline-offset-4 hover:underline p-0 h-auto font-normal inline-flex items-center"
+          >
             {$t('auth.registerNow')}
-          </Button>
+          </button>
         {:else}
           {$t('auth.hasAccount')}
-          <Button variant="link" on:click={toggleMode} class="p-0 h-auto font-normal">
+          <button 
+            type="button"
+            on:click={toggleMode} 
+            class="text-primary underline-offset-4 hover:underline p-0 h-auto font-normal inline-flex items-center"
+          >
             {$t('auth.loginNow')}
-          </Button>
+          </button>
         {/if}
       </p>
     </Card.Footer>

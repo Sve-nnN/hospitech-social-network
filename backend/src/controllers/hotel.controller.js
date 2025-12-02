@@ -5,6 +5,12 @@ import Post from '../models/Post.js';
 export const createHotel = async (req, res) => {
   try {
     console.log('[HotelController] createHotel body:', JSON.stringify(req.body));
+
+    // Add default stock image if no images provided
+    if (!req.body.imagenes_url || req.body.imagenes_url.length === 0) {
+      req.body.imagenes_url = ['https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop'];
+    }
+
     const hotel = await Hotel.create(req.body);
     res.status(201).json(hotel);
   } catch (error) {
@@ -20,8 +26,8 @@ export const getHotel = async (req, res) => {
     console.log('[HotelController] getHotel searching for ID:', id);
     const hotel = await Hotel.findById(id);
     if (!hotel) {
-        console.log('[HotelController] Hotel not found for ID:', id);
-        return res.status(404).json({ msg: 'Hotel no encontrado' });
+      console.log('[HotelController] Hotel not found for ID:', id);
+      return res.status(404).json({ msg: 'Hotel no encontrado' });
     }
     res.json(hotel);
   } catch (error) {

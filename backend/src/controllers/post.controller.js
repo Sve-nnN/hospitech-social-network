@@ -66,7 +66,7 @@ export const createPost = async (req, res) => {
  * @returns {Promise<void>}
  * @private
  */
-const actualizarRatingHotel = async (hotelId) => {
+export const actualizarRatingHotel = async (hotelId) => {
   const result = await Post.aggregate([
     { $match: { hotel_id: new mongoose.Types.ObjectId(hotelId) } },
     { $group: { _id: null, avgRating: { $avg: '$rating' } } }

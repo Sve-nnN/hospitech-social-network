@@ -1,10 +1,21 @@
+# --- Development Stage ---
+FROM node:18-alpine AS dev
+WORKDIR /app
+ENV NODE_ENV=development
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "run", "dev"]
+
+# --- Build Stage ---
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --production
 COPY . .
 
-# --- Etapa final ---
+# --- Production Stage ---
 FROM node:18-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production

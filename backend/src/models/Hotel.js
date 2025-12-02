@@ -17,14 +17,14 @@ const hotelSchema = new mongoose.Schema({
   imagenes_url: { type: [String], default: [] },
   descripcion: { type: String, default: '' },
   estrellas: { type: Number, default: 0 },
-  
+
   // Datos calculados
   avg_rating: { type: Number, default: 0 },
   num_reviews: { type: Number, default: 0 }
 }, { timestamps: true });
 
 // Auto-generate slug from nombre before saving
-hotelSchema.pre('save', function(next) {
+hotelSchema.pre('save', function () {
   if (this.isModified('nombre') && !this.slug) {
     const baseSlug = this.nombre
       .toLowerCase()
@@ -32,7 +32,6 @@ hotelSchema.pre('save', function(next) {
       .replace(/^-+|-+$/g, '');
     this.slug = `${baseSlug}-${Date.now()}`;
   }
-  next();
 });
 
 hotelSchema.index({ 'direccion.coordenadas': '2dsphere' });

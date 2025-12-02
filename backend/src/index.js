@@ -10,6 +10,7 @@ import userRoutes from "./routes/user.routes.js";
 import hotelRoutes from "./routes/hotel.routes.js";
 import postRoutes from "./routes/post.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import seedRoutes from "./routes/seed.routes.js";
 import setupSwagger from "./swagger.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
@@ -30,6 +31,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/hotels", hotelRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/seed", seedRoutes);
 // Swagger UI
 setupSwagger(app);
 
