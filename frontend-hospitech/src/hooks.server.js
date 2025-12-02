@@ -7,6 +7,7 @@
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'hospitech_secret_key_2024';
+console.log('[hooks] JWT_SECRET prefix:', JWT_SECRET.substring(0, 3));
 
 /**
  * Handles incoming requests and sets up authentication context

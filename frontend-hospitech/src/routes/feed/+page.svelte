@@ -5,8 +5,8 @@
 	import Skeleton from '$lib/ui/Skeleton.svelte';
 	import { showError } from '$lib/ui/globalFeedback';
 
-	let posts = [];
-	let loading = true;
+	let posts = $state([]);
+	let loading = $state(true);
 
 	onMount(async () => {
 		try {
@@ -17,7 +17,13 @@
 			const res = await fetch('/api/posts', { signal: controller.signal });
 			clearTimeout(timeoutId);
 
-			if (!res.ok) throw new Error('Error al cargar el feed');
+			if (!res.ok) {
+				if (res.status === 401) {
+					window.location.href = '/auth';
+					return;
+				}
+				throw new Error('Error al cargar el feed');
+			}
 			const data = await res.json();
 			posts = data.posts || [];
 		} catch (e) {

@@ -8,17 +8,17 @@
 	import { Label } from '$lib/components/ui/label';
 	import * as Card from '$lib/components/ui/card';
 
-	let username = '';
-	let password = '';
-	let email = '';
-	let nombre = '';
-	let apellido = '';
-	let error = '';
-	let fieldErrors: { [key: string]: string } = {};
-	let mode: 'login' | 'register' = 'login';
-	let loading = false;
+	let username = $state('');
+	let password = $state('');
+	let email = $state('');
+	let nombre = $state('');
+	let apellido = $state('');
+	let error = $state('');
+	let fieldErrors = $state({});
+	let mode = $state('login');
+	let loading = $state(false);
 
-	export let form: any;
+	let { form } = $props();
 
 	onMount(() => {
 		// Check URL for mode query parameter
@@ -157,7 +157,13 @@
 			</Card.Description>
 		</Card.Header>
 		<Card.Content>
-			<form class="space-y-5" on:submit|preventDefault={handleSubmit}>
+			<form
+				class="space-y-5"
+				onsubmit={(e) => {
+					e.preventDefault();
+					handleSubmit();
+				}}
+			>
 				<div class="grid w-full items-center gap-1.5">
 					<Label for="username">{$t('auth.username')}</Label>
 					<Input
@@ -252,7 +258,7 @@
 					{$t('auth.noAccount')}
 					<button
 						type="button"
-						on:click={toggleMode}
+						onclick={toggleMode}
 						class="text-primary underline-offset-4 hover:underline p-0 h-auto font-normal inline-flex items-center"
 					>
 						{$t('auth.registerNow')}
@@ -261,7 +267,7 @@
 					{$t('auth.hasAccount')}
 					<button
 						type="button"
-						on:click={toggleMode}
+						onclick={toggleMode}
 						class="text-primary underline-offset-4 hover:underline p-0 h-auto font-normal inline-flex items-center"
 					>
 						{$t('auth.loginNow')}
