@@ -11,7 +11,7 @@
 		error = null;
 
 		try {
-			const response = await fetch('http://localhost:3000/api/seed', {
+			const response = await fetch('/api/seed', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'

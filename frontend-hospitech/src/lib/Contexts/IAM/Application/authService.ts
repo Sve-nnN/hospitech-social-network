@@ -22,12 +22,15 @@ export class AuthService {
 		fetch: typeof globalThis.fetch;
 		cookies: Cookies;
 	}): Promise<AuthResult> {
+		console.log('[AuthService] Login attempt for:', username || email);
 		const apiResult = await AuthApi.login({ username, email, password, fetch });
+		console.log('[AuthService] AuthApi result:', apiResult.ok, apiResult.status);
 		if (!apiResult.ok) {
 			let message = apiResult.data.message || 'Error de autenticación';
 			if (apiResult.data.errors && Array.isArray(apiResult.data.errors)) {
 				message = apiResult.data.errors.map((e: any) => `${e.path || e.field || 'Error'}: ${e.msg || e.message}`).join(', ');
 			}
+			console.log('[AuthService] Login failed:', message);
 			return { success: false, message };
 		}
 		cookies.set('jwt', apiResult.data.accessToken, { path: '/', httpOnly: true, secure: false }); // secure: false for localhost
@@ -68,9 +71,9 @@ export class AuthService {
 			return { success: false, message };
 		}
 		if (apiResult.data.accessToken) {
-            cookies.set('jwt', apiResult.data.accessToken, { path: '/', httpOnly: true, secure: false });
-            return { success: true, token: apiResult.data.accessToken, user: apiResult.data.user };
-        }
+			cookies.set('jwt', apiResult.data.accessToken, { path: '/', httpOnly: true, secure: false });
+			return { success: true, token: apiResult.data.accessToken, user: apiResult.data.user };
+		}
 		return { success: true, user: apiResult.data.user || apiResult.data };
 	}
 }
