@@ -307,4 +307,6 @@ export const sharePost = async (req, res) => {
 };
 
 // Export aliases para mantener compatibilidad con las rutas existentes
+// Export aliases para mantener compatibilidad con las rutas existentes
 export { getPostById as getPost, getAllPosts as getPosts, getPostsByUser as getUserPosts };
+

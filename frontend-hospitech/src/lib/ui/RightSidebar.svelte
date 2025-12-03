@@ -1,9 +1,24 @@
-<script>
+  import { authStore } from '$lib/Contexts/IAM/Application/authStore';
+  import { derived } from 'svelte/store';
+  import { goto } from '$app/navigation';
+
+  const user = derived(authStore, ($auth) => $auth && $auth.user);
+
   const suggestedHotels = [
     { name: 'The Coastal Lodge', location: 'Bali, Indonesia' },
     { name: 'Mountain View Resort', location: 'Swiss Alps' },
     { name: 'Urban Boutique Hotel', location: 'Tokyo, Japan' },
   ];
+
+  async function handleLogout() {
+    try {
+      await fetch('/api/logout', { method: 'POST' });
+    } catch (e) {
+      console.error('Logout error:', e);
+    }
+    authStore.logout();
+    window.location.href = '/auth';
+  }
 </script>
 
 <div class="w-80 bg-white border-l border-gray-200 p-4 overflow-y-auto hidden lg:block">
@@ -26,5 +41,20 @@
         </div>
       {/each}
     </div>
+    </div>
   </div>
+
+  {#if $user}
+    <div class="mt-6 pt-6 border-t border-gray-200">
+      <button
+        onclick={handleLogout}
+        class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors font-medium text-sm"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+        </svg>
+        Sign Out
+      </button>
+    </div>
+  {/if}
 </div>
