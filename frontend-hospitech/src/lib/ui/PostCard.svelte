@@ -28,6 +28,11 @@
 		comments = post.comments || [];
 	});
 
+	// Local state
+	let showComments = $state(false);
+	let newComment = $state('');
+	let isSubmittingComment = $state(false);
+
 	/**
 	 * Toggles like status for the post
 	 * @returns {Promise<void>}
