@@ -29,7 +29,8 @@ export async function handle({ event, resolve }) {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout for fast fail
 
-                const res = await fetch('http://backend:3000/api/users/me', {
+                const API_URL = process.env.VITE_API_URL || 'http://backend:3000';
+                const res = await fetch(`${API_URL}/api/users/me`, {
                     headers: { 'Authorization': `Bearer ${token}` },
                     signal: controller.signal
                 });
