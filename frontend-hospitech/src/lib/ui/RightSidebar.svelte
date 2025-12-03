@@ -1,3 +1,4 @@
+<script>
   import { authStore } from '$lib/Contexts/IAM/Application/authStore';
   import { derived } from 'svelte/store';
   import { goto } from '$app/navigation';
