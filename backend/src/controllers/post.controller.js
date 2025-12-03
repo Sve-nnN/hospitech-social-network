@@ -135,10 +135,13 @@ export const getPostById = async (req, res) => {
  */
 export const getPostsByUser = async (req, res) => {
   try {
+    console.log('[PostController] getPostsByUser:', req.params.userId);
     const posts = await Post.find({ user_id: req.params.userId })
       .sort({ fecha_creacion: -1 });
+    console.log('[PostController] Found posts:', posts.length);
     res.json({ posts });
   } catch (error) {
+    console.error('[PostController] Error:', error);
     res.status(500).json({ error: error.message });
   }
 };
@@ -152,10 +155,13 @@ export const getPostsByUser = async (req, res) => {
  */
 export const getPostsByHotel = async (req, res) => {
   try {
+    console.log('[PostController] getPostsByHotel:', req.params.hotelId);
     const posts = await Post.find({ hotel_id: req.params.hotelId })
       .sort({ fecha_creacion: -1 });
+    console.log('[PostController] Found posts:', posts.length);
     res.json({ posts });
   } catch (error) {
+    console.error('[PostController] Error:', error);
     res.status(500).json({ error: error.message });
   }
 };
